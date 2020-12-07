@@ -1,0 +1,347 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>jQuery Slot Machine</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=2.0">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="./styles/style.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="./dist/jquery.slotmachine.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" type="text/css" />
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="./dist/slotmachine.js"></script>
+    <script src="./dist/jquery.slotmachine.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+  </head>
+
+  <body>
+
+    <div id="randomize">
+      <div class="container">
+        <h1>Welcome to Randomtaurant!</h1>
+
+        <div class="row">
+          <div class="col-sm-4">
+            <div>
+              <div id="machine1" class="randomizeMachine">
+                
+              </div>
+            </div>
+            <div id="machine1Result" class="col-xs-4 machineResult">Main</div>
+          </div>
+
+          <div class="col-sm-4">
+            <div>
+              <div id="machine2" class="randomizeMachine">
+                
+              </div>
+            </div>
+            <div id="machine2Result" class="col-xs-4 machineResult">Sub</div>
+          </div>
+
+          <div class="col-sm-4">
+            <div>
+              <div id="machine3" class="randomizeMachine">
+                
+              </div>
+            </div>
+            <div id="machine3Result" class="col-xs-4 machineResult">Sauce</div>
+          </div>
+        
+          <div class="btn-group btn-group-justified" role="group">
+            <button id="randomizeButton" type="button" class="btn btn-danger btn-lg">Shuffle</button>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+
+    <script>
+      
+      (function() {
+        const mains = [
+        "가공육",
+        "돼지꼬리",
+        "안창살",
+        "가리비",
+        "돼지등심",
+        "앞다리살",
+        "가브리살",
+        "돼지안심",
+        "양지머리",
+        "갈매기살",
+        "뒷다리살",
+        "연어",
+        "갈치",
+        "등심",
+        "오리고기",
+        "게",
+        "막창",
+        "오징어",
+        "고등어",
+        "목살",
+        "우둔살",
+        "관자",
+        "목심",
+        "우럭",
+        "광어",
+        "베이컨",
+        "우설",
+        "낙지",
+        "부채살",
+        "장어",
+        "달걀",
+        "살치살",
+        "전복",
+        "닭가슴살",
+        "삼겹살",
+        "전어",
+        "닭날개",
+        "삼치",
+        "차돌박이",
+        "닭다리살",
+        "새우",
+        "참치",
+        "닭발",
+        "소갈비",
+        "채끝",
+        "닭봉",
+        "소안심",
+        "치마살",
+        "대창",
+        "소꼬리",
+        "프렌치랙",
+        "돼지껍데기",
+        "숄더랙",
+        "항정살",
+        "전",
+        "민",
+        "경",
+        ]
+
+        const subs = [
+        "호박",
+        "양파",
+        "망고",
+        "무",
+        "파",
+        "김치",
+        "파프리카",
+        "마늘",
+        "브로콜리",
+        "피망",
+        "토마토",
+        "대추",
+        "미역",
+        "사과",
+        "버섯",
+        "우엉",
+        "파인애플",
+        "바질",
+        "단호박",
+        "애호박",
+        "홍시",
+        "우거지",
+        "가지",
+        "감자",
+        "곶감",
+        "깻잎",
+        "고구마",
+        "고추",
+        "부추",
+        "콜리플라워",
+        "배",
+        "상추",
+        "비트",
+        "포도",
+        "배추",
+        "참나물",
+        "오렌지",
+        "고추",
+        "곤약",
+        "아보카도",
+        "연근",
+        "바나나",
+        "양상추",
+        "샐러리",
+        "옥수수",
+        "두부",
+        "당근",
+        "어묵",
+        "시금치",
+        "아스파라거스",
+        "시래기",
+        "콩나물",
+        "고사리",
+        "바나나",
+        "치즈",
+        "올리브",
+        "달래",
+        ]
+
+        const sauces = [
+        "복숭아",
+        "흑임자",
+        "무화과",
+        "꿀",
+        "고추",
+        "콩나물",
+        "시금치",
+        "감",
+        "발사믹",
+        "오디",
+        "커피",
+        "초콜릿",
+        "바질",
+        "된장",
+        "강황",
+        "마늘",
+        "멜론",
+        "견과류",
+        "간장",
+        "팥",
+        "감자",
+        "치즈",
+        "호박",
+        "쌈장",
+        "레드와인",
+        "달래",
+        "겨자",
+        "블루베리",
+        "크림",
+        "화이트와인",
+        "페퍼민트",
+        "파프리카",
+        "오미자",
+        "토마토",
+        "양파",
+        "식초",
+        "보리",
+        "올리브",
+        "고추장",
+        "파슬리",
+        "아스파라거스",
+        "딸기",
+        "자몽",
+        "복분자",
+        "망고",
+        "옥수수",
+        "잣",
+        "유자",
+        "딸기",
+        "레몬/라임",
+        "살구",
+        "냉이",
+        "리치",
+        "체리",
+        "귤",
+        "차",
+        "계피",
+        "미역",
+        "파인애플",
+        "오렌지",
+        "아보카도",
+        "포도",
+        "검은콩",
+        "사과",
+        "비트",
+        "코코넛",
+        "버섯",
+        "루꼴라",
+        "김",
+        "생강",
+        "막걸리",
+        "고구마",
+        "톳",
+        "감태",
+        "솔잎",
+        "녹두",
+        "샐러리",
+        "다시마",
+        "토마토",
+        "샐러리",
+        "키위",
+        "메밀",
+        "와사비",
+        "사과",
+        "참외",
+        "생강",
+        "대추",
+        "당근",
+        "바나나",
+        "석류",
+        "클",
+        "래",
+        "식",
+        "대",
+        "박",
+        ]
+
+      for (i = 1; i < 4; i++) {
+        const machine = document.querySelector('#machine'+i);
+
+        let data
+        switch (i) {
+          case 1:
+            data = mains
+            break;
+
+          case 2:
+            data = subs
+            break;
+
+          case 3:
+            data = sauces
+            break;
+        
+          default:
+            break;
+        }
+
+        data.forEach(item => {
+          var node = document.createElement("div");
+          node.className = "item";
+          var textnode = document.createTextNode(item);
+          node.appendChild(textnode); 
+          node.style.fontSize = "25px";
+          machine.appendChild(node); 
+        })
+      }
+        
+      })();
+    </script>
+
+    <script id="codeScript2">
+      const btn = document.querySelector('#randomizeButton');
+      const results = {
+        machine1: document.querySelector('#machine1Result'),
+        machine2: document.querySelector('#machine2Result'),
+        machine3: document.querySelector('#machine3Result')
+      };
+      const el1 = document.querySelector('#machine1');
+      const el2 = document.querySelector('#machine2');
+      const el3 = document.querySelector('#machine3');
+      const machine1 = new SlotMachine(el1, { active: 0 });
+      const machine2 = new SlotMachine(el2, { active: 0 });
+      const machine3 = new SlotMachine(el3, { active: 0 });
+
+      function onComplete(active){
+        // results[this.element.id].innerText = `Index: ${this.active}`;
+      }
+
+      btn.addEventListener('click', () => {
+        machine1.shuffle(5, onComplete);
+        setTimeout(() => machine2.shuffle(5, onComplete), 500);
+        setTimeout(() => machine3.shuffle(5, onComplete), 1000);
+      });
+    </script>
+
+  </body>
+</html>
