@@ -44,11 +44,16 @@ code {
 h1 {
   text-align: center;
   padding-bottom: 25px;
+  color: white;
+  font-family: "Lobster", cursive;
 }
 
 .container {
   padding-top: 50px;
   padding-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  max-width: 750px;
 }
 
 a {
@@ -171,20 +176,32 @@ footer .content {
 #randomize {
   /* border-bottom: 10px solid rgb(72, 158, 48); */
   height: 100%;
-  background-color: #eb6b56;
-  border-top: 20px dashed #b8312f;
+  background-color: #0086cf;
+  /* background-color: #eb6b56; */
+  /* border-top: 20px dashed #b8312f; */
+}
+
+.row {
+  background-color: #e7a92d;
+  padding: 20px;
+  border: 3px solid;
+  border-radius: 15px;
 }
 
 #randomize .row > div.col-sm-4 > div {
   padding: 40px;
   width: 180px;
-  height: 180px;
+  height: 300px;
   background: white;
-  border-radius: 50%;
+  border-radius: 20px;
+  border: 3px solid;
   margin-left: auto;
   margin-right: auto;
   display: block;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #randomize .row > div.col-xs-4 > div {
@@ -212,10 +229,12 @@ footer .content {
   color: #fff;
   text-align: center;
   font-weight: 900;
-  height: 50px !important;
+  height: 35px !important;
   background: transparent !important;
   font-size: 18px;
   padding: 10px !important;
+  padding-bottom: 0px !important;
+  border: 0px !important;
 }
 
 /*
@@ -318,6 +337,7 @@ footer .content {
 #casino .btn-group {
   margin-top: 150px;
   transform: translateX(-25px);
+  margin: auto;
 }
 
 #casino .btn-group .btn {
